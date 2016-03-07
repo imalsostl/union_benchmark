@@ -1,0 +1,25 @@
+import glob
+import os
+from os import path
+import fnmatch
+
+env = Environment()
+env.Append(CCFLAGS="--std=c++14 -fdiagnostics-color=always -Wall -Wextra")
+
+debug = ARGUMENTS.get('debug', 0)
+
+if int(debug):
+    env.Append(CCFLAGS="-g -O0")
+else:
+    env.Append(CCFLAGS="-O3 -DNDEBUG")
+
+env.Append(CPPPATH="include/")
+
+def getSources():
+    matches = []
+    for root, dirnames, filenames in os.walk('src'):
+        for filename in fnmatch.filter(filenames, '*.cpp'):
+            matches.append(path.join(root, filename))
+    return matches
+
+exe = env.Program("union_benchmark", getSources(), LIBS = ["benchmark", "pthread"])
