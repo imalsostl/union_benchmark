@@ -5,7 +5,7 @@
 #include "inheritance/types/B.h"
 #include "inheritance/types/C.h"
 #include "inheritance/types/D.h"
-#include "inheritance/types/TypeIndex.h"
+#include "TypeIndex.h"
 
 #include <cassert>
 #include <memory>

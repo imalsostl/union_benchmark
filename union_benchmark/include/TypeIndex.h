@@ -1,9 +1,6 @@
 #ifndef UNION_BENCHMARK_TYPES_TYPEINDEX_H_
 #define UNION_BENCHMARK_TYPES_TYPEINDEX_H_
 
-namespace Inheritance
-{
-
 enum class TypeIndex : int
 {
 	NONE = 0,
@@ -12,7 +9,5 @@ enum class TypeIndex : int
 	C = 3,
 	D = 4
 };
-
-}
 
 #endif

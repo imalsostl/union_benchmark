@@ -1,7 +1,7 @@
 #ifndef UNION_BENCHMARK_TYPEINTERFACE_H_
 #define UNION_BENCHMARK_TYPEINTERFACE_H_
 
-#include "inheritance/types/TypeIndex.h"
+#include "TypeIndex.h"
 
 #include <memory>
 
