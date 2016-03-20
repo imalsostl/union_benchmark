@@ -16,7 +16,10 @@ public:
 
 	virtual TypeIndex next_type() const = 0;
 
-	std::unique_ptr<TypeInterface> next();
+	TypeInterface* next();
+
+private:
+	mutable std::unique_ptr<TypeInterface> cache;
 };
 
 }

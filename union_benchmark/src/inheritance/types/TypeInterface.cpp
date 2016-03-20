@@ -2,7 +2,12 @@
 
 #include "inheritance/Factory.h"
 
-std::unique_ptr<Inheritance::TypeInterface> Inheritance::TypeInterface::next()
+Inheritance::TypeInterface* Inheritance::TypeInterface::next()
 {
-	return Inheritance::Factory::create(next_type());
+	if(!cache)
+	{
+		cache = Inheritance::Factory::create(next_type());
+	}
+
+	return cache.get();
 }

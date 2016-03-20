@@ -9,7 +9,7 @@ namespace Variant
 class Factory
 {
 public:
-	static VariantType create(TypeIndex i)
+	static VariantType create(const TypeIndex i)
 	{
 		switch(i)
 		{

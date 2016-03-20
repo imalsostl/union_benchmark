@@ -4,16 +4,25 @@ from os import path
 import fnmatch
 
 env = Environment()
-env.Append(CCFLAGS="--std=c++14 -fdiagnostics-color=always -Wall -Wextra")
+env.Append(CCFLAGS="--std=c++14 -Wall -Wextra")
+
+colourise = ARGUMENTS.get('c', 1)
+
+if int(colourise):
+    env.Append(CCFLAGS="-fdiagnostics-color=always")
+else:
+    env.Append(CCFLAGS="-fdiagnostics-color=never")
 
 debug = ARGUMENTS.get('debug', 0)
 
 if int(debug):
     env.Append(CCFLAGS="-g -O0")
 else:
-    env.Append(CCFLAGS="-O3 -DNDEBUG")
+    env.Append(CCFLAGS="-O3 -DNDEBUG -flto")
+    env.Append(LINKFLAGS="-O3 -flto")
 
 env.Append(CPPPATH="include/")
+env.Append(LIBPATH="/usr/local/lib/")
 
 def getSources():
     matches = []
